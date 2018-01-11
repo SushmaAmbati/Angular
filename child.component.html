@@ -1,0 +1,162 @@
+<div class="container" id="mainDiv">
+  <h1>User Form</h1>
+  <h2 class="angular-2-css-background"></h2>
+
+  <form [formGroup]="childUserForm" (ngSubmit)="onSubmit()">
+    <div >
+      <label>Name</label>
+      <input type="text" name="name" formControlName="name" maxlength="10" >
+      <!--<br/><label *ngIf="childUserForm.get('name').invalid && childUserForm.get('name').dirty" class = "error"> Team name is required. </label>-->
+      <!--<div *ngIf="(childUserForm.get('name').touched || childUserForm.get('name').dirty) && childUserForm.get('name').errors"-->
+           <!--class="alert alert-danger" id="nameErrorDiv">-->
+        <!--<div [hidden]="!childUserForm.get('name').errors.">-->
+          <!--Please enter name-->
+        <!--</div>-->
+        <!--<div [hidden]="!childUserForm.get('name').validator(maxLength)">-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div *ngIf="(name.touched || name.dirty) && name.errors" class="alert alert-danger" id="nameErrorDiv">-->
+      <div *ngIf="childUserForm.get('name').touched || childUserForm.get('name').dirty" >
+        <div [hidden]="!childUserForm.get('name').hasError('required')">
+          Please enter name
+        </div>
+        <div [hidden]="!childUserForm.get('name').hasError('minlength')">
+          Please enter at least 4 characters
+        </div>
+      <!--</div>-->
+
+    </div>
+    </div>
+
+    <div>
+      <label>Email</label>
+      <input type="text" name="email" formControlName="email">
+      <div *ngIf="childUserForm.get('email').touched || childUserForm.get('email').dirty" >
+        <div [hidden]="!childUserForm.get('email').hasError('required')">
+          Please enter email
+        </div>
+        <div [hidden]="!childUserForm.get('email').hasError('pattern')">
+          Please enter at a valid email Eg: xxxx@yyyy.com
+        </div>
+      </div>
+
+      <!--<div *ngIf="(email.touched || email.dirty) && email.errors" class="alert alert-danger" id="emailErrorDiv">-->
+        <!--<div [hidden]="!email.errors.required">-->
+          <!--Please enter email-->
+        <!--</div>-->
+        <!--<div [hidden]="!email.errors.pattern">-->
+          <!--Please enter at a valid email Eg: xxxx@yyyy.com-->
+        <!--</div>-->
+      <!--</div>-->
+    </div>
+    <div formGroupName="address">
+      <label>Street</label>
+      <input type="text" name="street" formControlName="street">
+      <!--<div *ngIf="address.get('street').touched || address.get('street').dirty" >-->
+        <!--<div [hidden]="!address.get('street').hasError('required')">-->
+          <!--Please enter street-->
+        <!--</div>-->
+
+      <!--</div>-->
+      <!--&lt;!&ndash;<div *ngIf="(street.touched || street.dirty) && street.errors" class="alert alert-danger" id="streetErrorDiv">&ndash;&gt;-->
+        <!--<div [hidden]="!street.errors.required">-->
+          <!--Please enter street-->
+        <!--</div>-->
+      <!--</div>-->
+
+    <div>
+      <label>City</label>
+      <input type="text"  name="city" formControlName="city">
+      <!--<div *ngIf="childUserForm.get('city').touched || childUserForm.get('city').dirty" >-->
+        <!--<div [hidden]="!childUserForm.get('city').hasError('required')">-->
+          <!--Please enter city-->
+        <!--</div>-->
+
+      <!--</div>-->
+      <!--&lt;!&ndash;<div *ngIf="(city.touched || city.dirty) && city.errors" class="alert alert-danger" id="cityErrorDiv">&ndash;&gt;-->
+        <!--&lt;!&ndash;<div [hidden]="!city.errors.required">&ndash;&gt;-->
+          <!--&lt;!&ndash;Please enter city&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    </div>
+      <div>
+        <label>Zip</label>
+        <input type="text" name="zipCode" formControlName="zipCode">
+
+
+        <!--<div *ngIf="childUserForm.get('zipCode').touched || childUserForm.get('zipCode').dirty" >-->
+          <!--<div [hidden]="!childUserForm.get('zipCode').hasError('required')">-->
+            <!--Please enter city-->
+          <!--</div>-->
+          <!--<div [hidden]="!childUserForm.get('zipCode').hasError('pattern')">-->
+            <!--Please enter a valid zip code Eg: 11111-1111-->
+          <!--</div>-->
+        <!--</div>-->
+      </div>
+
+    </div>
+
+    <!--<div>-->
+      <!--<label>State:</label>-->
+      <!--<select #stateSelect name="state" formControlName="state">-->
+        <!--&lt;!&ndash;<option *ngIf='selectedCountry.id == 0' value="0">&#45;&#45;Select&#45;&#45;</option>&ndash;&gt;-->
+        <!--&lt;!&ndash;<option *ngFor="let state of states "&ndash;&gt;-->
+                <!--&lt;!&ndash;value={{state.id}}>{{state.name}}&ndash;&gt;-->
+        <!--&lt;!&ndash;</option>&ndash;&gt;-->
+      <!--</select>-->
+    <!--</div>-->
+    <!--<div>-->
+      <!--<label>Country:</label>-->
+      <!--<select #countrySelect [ngModel]="selectedCountry.id"-->
+              <!--(change)="onSelect($event.currentTarget.selectedIndex)" formControlName="country" name="country">-->
+        <!--<option-->
+          <!--value="0"-->
+          <!--selected="true"-->
+          <!--disabled-->
+          <!--hidden>&#45;&#45;Select&#45;&#45;</option>-->
+        <!--&lt;!&ndash;<option value="-1">Select one option ... </option>&ndash;&gt;-->
+        <!--&lt;!&ndash;<option [ngValue]="null">Select Category</option>&ndash;&gt;-->
+        <!--&lt;!&ndash;<option value="" infor-translate="select_application_name"></option>&ndash;&gt;-->
+        <!--<option *ngFor="let country of countries"-->
+                <!--value={{country.id}}>{{country.name}}-->
+        <!--</option>-->
+      <!--</select>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+    <!--<label>State:</label>-->
+    <!--<select #stateSelect class="form-control" name="stateSelect" [(ngModel)]="selectedState.id" (change)="onSelectState($event.currentTarget.selectedIndex)">-->
+    <!--<<option value="0">&#45;&#45;Select&#45;&#45;</option>-->
+    <!--<option *ngFor="let state of states "-->
+    <!--value= {{state.id}}>{{state.name}}-->
+    <!--</option>-->
+    <!--</select>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+    <!--<label>Country:</label>-->
+    <!--<select #countrySelect class="form-control" name="countrySelect">-->
+    <!--<option *ngIf='selectedState.id == 0' value="0">&#45;&#45;Select&#45;&#45;</option>-->
+    <!--<option *ngFor="let country of countries"-->
+    <!--value= {{country.id}}>{{country.name}}-->
+    <!--</option>-->
+    <!--</select>-->
+    <!--</div>-->
+    <!--<div>-->
+      <!--<label>Zip</label>-->
+      <!--<input type="text" name="zipCode" formControlName="zipCode">-->
+
+
+      <!--&lt;!&ndash;<div *ngIf="(zipCode.touched || zipCode.dirty) && zipCode.errors" class="alert alert-danger" id="zipErrorDiv" [ngModel]="zipCode.value">&ndash;&gt;-->
+        <!--&lt;!&ndash;<div [hidden]="!zipCode.errors.required">&ndash;&gt;-->
+          <!--&lt;!&ndash;Please enter zip code&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div [hidden]="!zipCode.errors.pattern">&ndash;&gt;-->
+          <!--&lt;!&ndash;Please enter a valid zip code Eg: 11111-1111&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--</div>-->
+    <!--</div>-->
+    <div>
+      <button type="submit" class="btn btn-primary" [disabled]="!childUserForm.valid">Submit</button>
+    </div>
+  </form>
+</div>

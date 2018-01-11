@@ -1,0 +1,27 @@
+input.ng-invalid{
+  border-left: 5px solid red;
+}
+
+input.ng-valid{
+  border-left: 5px solid green;
+}
+select.ng-pristine{
+  border-left: 5px solid red;
+}
+select.ng-dirty{
+  border-left: 5px solid green;
+}
+#mainDiv {
+  background: #00ff00 url(http://hdflowerwallpaper.com/wallpaper/2015/11/red-and-black-flower-4-hd-wallpaper.jpg) repeat fixed center;
+  color: #ffffff;
+}
+
+span {
+  color: #e57c00;
+}
+input, select{
+  width: 300px
+}
+#nameerrorDiv, #emailErrorDiv, #zipErrorDiv, #cityErrorDiv, #streetErrorDiv{
+  width: 300px;
+}
